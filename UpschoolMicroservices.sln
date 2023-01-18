@@ -17,7 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E6CFFD18-4314-4DEB-864C-DB7DF8982ADC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpSchoolECommerce.Shared", "Shared\UpSchoolECommerce.Shared\UpSchoolECommerce.Shared.csproj", "{3E0D0790-C740-40DF-B127-08F8556F4ED9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpSchoolECommerce.Shared", "Shared\UpSchoolECommerce.Shared\UpSchoolECommerce.Shared.csproj", "{3E0D0790-C740-40DF-B127-08F8556F4ED9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{C1B10E62-BECE-4060-9577-F45076B3F1EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UpSchoolECommerce.IdentityServer", "IdentityServer\UpSchoolECommerce.IdentityServer\UpSchoolECommerce.IdentityServer.csproj", "{398AD8F1-D543-4023-B3F3-BBCEA333F9C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,10 @@ Global
 		{3E0D0790-C740-40DF-B127-08F8556F4ED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E0D0790-C740-40DF-B127-08F8556F4ED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E0D0790-C740-40DF-B127-08F8556F4ED9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{398AD8F1-D543-4023-B3F3-BBCEA333F9C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{398AD8F1-D543-4023-B3F3-BBCEA333F9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{398AD8F1-D543-4023-B3F3-BBCEA333F9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{398AD8F1-D543-4023-B3F3-BBCEA333F9C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +49,7 @@ Global
 		{AA890B6A-DC29-40DC-9A63-31F434561FE4} = {EE75D187-AE5C-4986-81EC-0F142D295184}
 		{DA881C8A-00AF-4EC8-AE6A-C27F9D97B161} = {AA890B6A-DC29-40DC-9A63-31F434561FE4}
 		{3E0D0790-C740-40DF-B127-08F8556F4ED9} = {E6CFFD18-4314-4DEB-864C-DB7DF8982ADC}
+		{398AD8F1-D543-4023-B3F3-BBCEA333F9C0} = {C1B10E62-BECE-4060-9577-F45076B3F1EB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C54AA12-76A5-4F0F-B0E0-0CE16306A2E8}
