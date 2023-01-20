@@ -10,6 +10,15 @@ namespace UpSchoolECommerce.IdentityServer
 {
     public static class Config
     {
+        public static IEnumerable<IdentityResource> IdentityResources =>
+                   new IdentityResource[]
+                   {
+                       new IdentityResources.Email(),
+                       new IdentityResources.Profile(),
+                       new IdentityResources.OpenId()
+
+
+                   };
         public static IEnumerable<ApiResource> ApiResources =>
                    new ApiResource[]
                    {
@@ -17,22 +26,22 @@ namespace UpSchoolECommerce.IdentityServer
                {
                    Scopes= {"Catalog_FullPermission" }
                },
-                  new ApiResource("Resources_Order")
-               {
-                   Scopes= { "Order_FullPermission" }
-               },
-                      new ApiResource("Resources_Discount")
-               {
-                   Scopes= { "Discount_FullPermission" }
-               },
-                         new ApiResource("Resources_Basket")
-               {
-                   Scopes= { "Basket_FullPermission" }
-               },
-                           new ApiResource("Resources_Payment")
-               {
-                   Scopes= { "Payment_FullPermission" }
-               },
+               //     new ApiResource("Resources_Order")
+               //{
+               //    Scopes= { "Order_FullPermission" }
+               //},
+               //       new ApiResource("Resources_Discount")
+               //{
+               //      Scopes= { "Discount_FullPermission" }
+               //},
+               //          new ApiResource("Resources_Basket")
+               //{
+               //    Scopes= { "Basket_FullPermission" }
+               //},
+               //            new ApiResource("Resources_Payment")
+               //{
+               //    Scopes= { "Payment_FullPermission" }
+               //},
                               new ApiResource("Resources_Photo_Stock")
                {
                    Scopes= { "Photo_Stock_FullPermission" }
@@ -45,10 +54,10 @@ namespace UpSchoolECommerce.IdentityServer
             new ApiScope[]
             {
                new ApiScope("Catalog_FullPermission","Katalog Api için tam yetkili erişim"),
-               new ApiScope("Order_FullPermission","Sipariş Api İçin tam yetkili erişim"),
-               new ApiScope("Discount_FullPermission","İndirim Api İçin tam yetkili erişim"),
-               new ApiScope("Basket_FullPermission","Sepet Api İçin tam yetkili erişim"),
-               new ApiScope("Payment_FullPermission","Sepet Api İçin tam yetkili erişim"),
+               //new ApiScope("Order_FullPermission","Sipariş Api İçin tam yetkili erişim"),
+               //new ApiScope("Discount_FullPermission","İndirim Api İçin tam yetkili erişim"),
+               //new ApiScope("Basket_FullPermission","Sepet Api İçin tam yetkili erişim"),
+               //new ApiScope("Payment_FullPermission","Sepet Api İçin tam yetkili erişim"),
                new ApiScope("Photo_Stock_FullPermission","Sepet Api İçin tam yetkili erişim"),
                new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
 
@@ -58,21 +67,25 @@ namespace UpSchoolECommerce.IdentityServer
             new Client[]
             {
                 // m2m client credentials flow client
+                //giriş yapmadan kullanılacak kısım
                 new Client
                 {
-                    ClientId = "mvcclient",
+                    ClientId = "mvcClient",
                     ClientName = "asp.netcoremvc",
 
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedGrantTypes = GrantTypes.ClientCredentials, //Kullanıcının nelere  ulaşacağı
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
-                    AllowedScopes = { "Catalog_FullPermission","Order_FullPermission","Discount_FullPermission","Basket_FullPermission","Payment_FullPermission","Photo_Stock_FullPermission",IdentityServerConstants.LocalApi.ScopeName }
-                    
+                    AllowedScopes = { "Catalog_FullPermission",/*"Order_FullPermission","Discount_FullPermission","Basket_FullPermission","Payment_FullPermission",*/"Photo_Stock_FullPermission",IdentityServerConstants.LocalApi.ScopeName }
+
                 },
 
                 // interactive client using code flow + pkce
+                //giriş yapıldıktan sonra çalışacak
                 new Client
                 {
+                    AccessTokenLifetime=50,
+
                     ClientId = "interactive",
                     ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
 

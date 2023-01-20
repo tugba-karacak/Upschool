@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -6,16 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UpSchoolECommerce.Services.Catalog.Services;
-using UpSchoolECommerce.Services.Catalog.Settings;
 
-namespace UpSchoolECommerce.Services.Catalog
+namespace UpschoolMicroservices.Services.Order.Api
 {
     public class Startup
     {
@@ -29,24 +25,11 @@ namespace UpSchoolECommerce.Services.Catalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
-            {
-                options.Authority = Configuration["IdentityServerURL"];
-                options.Audience = "Resources_Catalog";
-                options.RequireHttpsMetadata = false;
-            });
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IProductService, ProductService>();
-            services.AddAutoMapper(typeof(Startup));
-            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
-            services.AddSingleton<IDatabaseSettings>(sp =>
-            {
-                return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
-            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "UpSchoolECommerce.Services.Catalog", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "UpschoolMicroservices.Services.Order.Api", Version = "v1" });
             });
         }
 
@@ -57,11 +40,11 @@ namespace UpSchoolECommerce.Services.Catalog
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UpSchoolECommerce.Services.Catalog v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UpschoolMicroservices.Services.Order.Api v1"));
             }
 
             app.UseRouting();
-            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
