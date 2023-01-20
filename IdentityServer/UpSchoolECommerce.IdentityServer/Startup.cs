@@ -82,7 +82,7 @@ namespace UpSchoolECommerce.IdentityServer
             }
 
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
             app.UseIdentityServer();
             app.UseAuthorization();
