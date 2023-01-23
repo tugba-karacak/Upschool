@@ -30,14 +30,14 @@ namespace UpSchoolECommerce.IdentityServer
                //{
                //    Scopes= { "Order_FullPermission" }
                //},
-               //       new ApiResource("Resources_Discount")
-               //{
-               //      Scopes= { "Discount_FullPermission" }
-               //},
-               //          new ApiResource("Resources_Basket")
-               //{
-               //    Scopes= { "Basket_FullPermission" }
-               //},
+                    new ApiResource("Resources_Discount")
+               {
+                     Scopes= { "Discount_FullPermission" }
+               },
+                        new ApiResource("Resources_Basket")
+               {
+                  Scopes= { "Basket_FullPermission" }
+             },
                //            new ApiResource("Resources_Payment")
                //{
                //    Scopes= { "Payment_FullPermission" }
@@ -55,9 +55,9 @@ namespace UpSchoolECommerce.IdentityServer
             {
                new ApiScope("Catalog_FullPermission","Katalog Api için tam yetkili erişim"),
                //new ApiScope("Order_FullPermission","Sipariş Api İçin tam yetkili erişim"),
-               //new ApiScope("Discount_FullPermission","İndirim Api İçin tam yetkili erişim"),
-               //new ApiScope("Basket_FullPermission","Sepet Api İçin tam yetkili erişim"),
-               //new ApiScope("Payment_FullPermission","Sepet Api İçin tam yetkili erişim"),
+               new ApiScope("Discount_FullPermission","İndirim Api İçin tam yetkili erişim"),
+               new ApiScope("Basket_FullPermission","Sepet Api İçin tam yetkili erişim"),
+               //new ApiScope("Payment_FullPermission"," Api İçin tam yetkili erişim"),
                new ApiScope("Photo_Stock_FullPermission","Sepet Api İçin tam yetkili erişim"),
                new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
 
@@ -76,7 +76,7 @@ namespace UpSchoolECommerce.IdentityServer
                     AllowedGrantTypes = GrantTypes.ClientCredentials, //Kullanıcının nelere  ulaşacağı
                     ClientSecrets = { new Secret("secret".Sha256()) },
 
-                    AllowedScopes = { "Catalog_FullPermission",/*"Order_FullPermission","Discount_FullPermission","Basket_FullPermission","Payment_FullPermission",*/"Photo_Stock_FullPermission",IdentityServerConstants.LocalApi.ScopeName }
+                    AllowedScopes = { "Catalog_FullPermission", /*"Basket_FullPermission",*//* "Discount_FullPermission",*//*" Basket_FullPermission",*//*"Order_FullPermission","Discount_FullPermission",Basket_FullPermission","Payment_FullPermission",*/"Photo_Stock_FullPermission",IdentityServerConstants.LocalApi.ScopeName }
 
                 },
 
@@ -97,7 +97,7 @@ namespace UpSchoolECommerce.IdentityServer
                     //PostLogoutRedirectUris = { "https://localhost:44300/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "Catalog_FullPermission",IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName }
+                    AllowedScopes = { "Catalog_FullPermission", "Basket_FullPermission", "Discount_FullPermission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess, IdentityServerConstants.LocalApi.ScopeName }
                    
                 },
             };

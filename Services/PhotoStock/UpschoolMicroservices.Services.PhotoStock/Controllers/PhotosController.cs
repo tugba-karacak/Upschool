@@ -32,5 +32,6 @@ namespace UpschoolMicroservices.Services.PhotoStock.Controllers
             }
             return CreateActionResultInstance(ResponseDto<PhotoDto>.Fail("Bir hata oluştu", 400));
         }
+
     }
 }

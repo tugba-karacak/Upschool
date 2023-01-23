@@ -54,5 +54,6 @@ namespace UpSchoolECommerce.Services.Catalog.Controllers
             return CreateActionResultInstance(response);
 
         }
+
     }
 }
