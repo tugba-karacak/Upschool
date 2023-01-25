@@ -5,12 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Results\" />
-    <Folder Include="Mappings\" />
-    <Folder Include="Queries\" />
-    <Folder Include="Handlers\" />
-    <Folder Include="DTOs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\UpSchoolECommerce.Shared\UpSchoolECommerce.Shared.csproj" />
+    <ProjectReference Include="..\UpschoolMicroservices.Order.Domain\UpschoolMicroservices.Order.Domain.csproj" />
+    <ProjectReference Include="..\UpschoolMicroservices.Order.Infrastructure\UpschoolMicroservices.Order.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
