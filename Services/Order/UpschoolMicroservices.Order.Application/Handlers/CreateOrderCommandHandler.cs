@@ -17,12 +17,12 @@ namespace UpschoolMicroservices.Order.Application.Handlers
     public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, ResponseDto<CreatedOrderDto>>
     {
         private readonly OrderDbContext _orderDbContext;
-        private readonly IMapper _mapper;
+ 
 
-        public CreateOrderCommandHandler(OrderDbContext orderDbContext, IMapper mapper)
+        public CreateOrderCommandHandler(OrderDbContext orderDbContext)
         {
             _orderDbContext = orderDbContext;
-            _mapper = mapper;
+           
         }
         public async Task<ResponseDto<CreatedOrderDto>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
         {

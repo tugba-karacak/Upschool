@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UpSchoolECommerce.Shared.Services;
 
 namespace UpschoolMicroservices.Services.FakePayment
 {
@@ -21,12 +24,26 @@ namespace UpschoolMicroservices.Services.FakePayment
         }
 
         public IConfiguration Configuration { get; }
+        public object JwtSecurityTokenHandler { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddHttpContextAccessor();
+
+            services.AddScoped<ISharedIdentityService, SharedIdentityService>();
+      
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.Authority = Configuration["IdentityServerURL"];
+                options.Audience = "Resources_Payment";
+                options.RequireHttpsMetadata = false;
+            });
+            services.AddControllers(opt => {
+                opt.Filters.Add(new AuthorizeFilter());
+
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UpschoolMicroservices.Services.FakePayment", Version = "v1" });
@@ -44,7 +61,7 @@ namespace UpschoolMicroservices.Services.FakePayment
             }
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

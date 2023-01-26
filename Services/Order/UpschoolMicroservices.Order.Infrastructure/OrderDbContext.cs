@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UpschoolMicroservices.Order.Infrastructure
 {
- public   class OrderDbContext:DbContext
+ public class OrderDbContext:DbContext
     {
         public const string Default_Schema = "ordering";
         public OrderDbContext(DbContextOptions<OrderDbContext>options):base(options)

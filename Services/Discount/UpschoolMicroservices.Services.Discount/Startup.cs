@@ -32,6 +32,7 @@ namespace UpschoolMicroservices.Services.Discount
         {
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("sub");
             services.AddHttpContextAccessor();
+          
             services.AddScoped<ISharedIdentityService, SharedIdentityService>();
             services.AddScoped<IDiscountService, DiscountService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
